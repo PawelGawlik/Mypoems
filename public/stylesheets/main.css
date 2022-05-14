@@ -1,0 +1,243 @@
+@font-face {
+    font-family: Azt;
+    src: url(../fonts/azt.ttf)format("truetype");
+}
+
+@font-face {
+    font-family: Pacifico;
+    src: url(../fonts/pacifico.ttf)format("truetype");
+}
+
+body {
+    font-family: Pacifico;
+    color: #964B00;
+    height: 75vw;
+    margin: 0;
+    background-image: url(../images/poetry.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+h1 {
+    font-family: Azt;
+    color: #964B00;
+    font-size: 5.38vw;
+    font-weight: 700;
+    position: absolute;
+    left: 10vw;
+    top: 5.38vw;
+}
+
+h2 {
+    margin: 0;
+    width: 100%;
+    font-weight: 400;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    width: 90%;
+    height: 100%;
+    margin-left: 6%;
+}
+
+.poem1,
+.poem2,
+.poem3,
+.poem4,
+.poem5,
+.poem6,
+.poem7,
+.poem8 {
+    width: 22.7vw;
+    height: 18.9vw;
+}
+
+.heart {
+    width: 2.7vw;
+}
+
+.underlined {
+    width: 22.7vw;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.counter {
+    font-size: 1.5vw;
+    padding-left: 0.75vw;
+    color: #964B00;
+}
+
+p {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 0.4vw;
+}
+
+a {
+    text-decoration: none;
+    color: #964B00;
+    height: 1.5vw;
+}
+
+.poem1 {
+    visibility: hidden;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    font-family: azt;
+    font-size: 3vw;
+    font-weight: 700;
+    text-align: center;
+}
+
+footer {
+    width: 50%;
+}
+
+@media all and (max-width: 550px) {
+    body {
+        height: 2000px;
+        background-image: url(../images/poetry2.jpg);
+        background-size: cover;
+    }
+
+    h1 {
+        font-size: 13vw;
+        left: 30vw;
+        top: 13vw;
+    }
+
+    .poem2,
+    .poem3,
+    .poem4,
+    .poem5,
+    .poem6,
+    .poem7 {
+        width: 300px;
+        height: 250px;
+    }
+
+    .heart {
+        width: 25px;
+    }
+
+    .underlined {
+        width: 300px;
+    }
+
+    .counter {
+        font-size: 15px;
+        padding-left: 7.5px;
+    }
+
+    .poem1 {
+        height: 50px;
+    }
+
+    .poem8 {
+        display: none;
+    }
+
+    .footer {
+        font-size: 6vw;
+    }
+}
+
+@media all and (min-width: 351px) and (max-width: 400px) {
+    body {
+        height: 2000px;
+        background-image: url(../images/poetry4.jpg);
+        background-size: cover;
+    }
+}
+
+@media all and (min-width: 401px) and (max-width: 550px) {
+    body {
+        height: 2200px;
+        background-image: url(../images/poetry4.jpg);
+        background-size: cover;
+    }
+
+    .poem1 {
+        width: 200px;
+        height: 100px;
+    }
+}
+
+@media all and (min-width: 551px) and (max-width: 1000px) {
+    body {
+        height: 1000px;
+        background-image: url(../images/poetry5.jpg);
+        background-size: cover;
+    }
+
+    .poem1,
+    .poem2,
+    .poem3,
+    .poem4,
+    .poem5,
+    .poem6,
+    .poem7,
+    .poem8 {
+        width: 28vw;
+        height: 24vw;
+    }
+}
+
+@media all and (min-width: 551px) and (max-width: 650px) {
+    h1 {
+        left: 13vw;
+        top: 8vw;
+    }
+}
+
+@media all and (min-width: 325px) and (max-width: 350px) {
+
+    hr,
+    .footer {
+        position: relative;
+        top: 150px;
+    }
+}
+
+@media all and (min-width: 445px) and (max-width: 465px) {
+
+    hr,
+    .footer {
+        position: relative;
+        top: 100px;
+    }
+}
+
+@media all and (min-width: 788px) and (max-width: 900px) {
+
+    hr,
+    .footer {
+        position: relative;
+        top: 150px;
+    }
+}
+
+@media all and (min-width: 466px) and (max-width: 488px) {
+
+    hr,
+    .footer {
+        position: relative;
+        top: 210px;
+    }
+}
