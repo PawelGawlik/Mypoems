@@ -1,6 +1,5 @@
 {
     "env": {
-        "PORT": 2000,
-        "MONGODB_URI": "mongodb+srv://Pawgaw:CcaD5900@cluster0.dx8wf.mongodb.net/poetry?retryWrites=true&w=majority"
+        "PORT": 2000
     }
 }
