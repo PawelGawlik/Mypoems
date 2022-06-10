@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Strona admina</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="Paweł Gawlik">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <link rel="stylesheet" href="./stylesheets/main.css">
+</head>
+
+<body>
+    <h1>Witaj Pawgaw!</h1>
+    <a href="/">Przejdź na stronę główną</a>
+    <a href="/logout">Wyloguj się</a>
+    <form action="/admin.html" method="post">
+        <label>Tytuł wiersza</label>
+        <br>
+        <input name="title">
+        <br>
+        <label>Wstęp na stronę główną</label>
+        <br>
+        <textarea name="header"></textarea>
+        <br>
+        <label>Wiersz</label>
+        <br>
+        <textarea name="poem"></textarea>
+        <br>
+        <button type="submit">Wyślij</button>
+    </form>
+</body>
+
+</html>
