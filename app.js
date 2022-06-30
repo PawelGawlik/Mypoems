@@ -27,7 +27,7 @@ app.get('*', (req, res) => {
     res.status(404);
     res.redirect('/error404.html');
 })
-app.use((error, req, res, next) => {
+/*app.use((error, req, res, next) => {
     res.status(500);
     res.redirect('/error500.html');
-})
+})*/
