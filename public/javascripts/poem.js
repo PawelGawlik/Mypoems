@@ -34,6 +34,9 @@ if (path !== '/poem.html') {
         while (i < poem.comments.length) {
             commentDisplay("nick");
             commentDisplay("comment");
+            const div = document.createElement('div');
+            div.innerText = poem.comments[i].date;
+            comments[0].appendChild(div)
             /*const p1 = document.createElement("p");
             const text1 = document.createTextNode(poem.comments[i].nick);
             p1.appendChild(text1);

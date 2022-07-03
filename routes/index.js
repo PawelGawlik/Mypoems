@@ -69,12 +69,16 @@ router.get('/poem.html/:id?', (req, res) => {
 router.post('/comment/:id', async (req, res) => {
     await client.connect();
     const id = parseInt(req.params.id);
-    console.log(req.params.id)
     const poemArr = await main.find({ myId: id }).toArray();
     const { nick, comment } = req.body;
     poemArr[0].comments.push({
         nick,
-        comment
+        comment,
+        date: new Date().toLocaleDateString('pl-PL', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        })
     })
     const { comments } = poemArr[0];
     await main.updateOne({ myId: id }, {
@@ -97,6 +101,22 @@ router.get('/likes/:id', async (req, res) => {
         }
     })
     res.json(poemArr[0]);
+    client.close();
+})
+router.delete('/comment', async (req, res) => {
+    await client.connect();
+    const body = req.body;
+    const poem = await main.find({ myId: body.id }).toArray();
+    const newArr = poem[0].comments.filter((el) => {
+        return el.comment !== body.comment;
+    })
+    await main.updateOne({ myId: body.id }, {
+        $set: {
+            comments: newArr,
+            commentNumber: newArr.length
+        }
+    })
+    res.json(poem[0]);
     client.close();
 })
 module.exports = router;
