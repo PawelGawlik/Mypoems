@@ -5,24 +5,35 @@ fetch('/poems').then((res) => {
     let i = 0;
     while (i < poemArr.length) {
         for (let j = 0; j < poemArr[i].comments.length; j++) {
-            const li = document.createElement('li');
-            const { comment } = poemArr[i].comments[j];
-            const id = poemArr[i].myId;
-            li.innerText = comment;
-            const button = document.createElement('button');
-            button.innerText = 'Usuń';
-            li.appendChild(button);
-            ol[0].appendChild(li);
-            button.onclick = () => {
-                li.remove();
-                fetch('/comment', {
-                    method: 'DELETE',
+            let { display } = poemArr[i].comments[j];
+            if (display) {
+                const li = document.createElement('li');
+                const { comment } = poemArr[i].comments[j];
+                const id = poemArr[i].myId;
+                fetch('/commentDisplay', {
+                    method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         comment,
                         id
                     })
                 })
+                li.innerText = comment;
+                const button = document.createElement('button');
+                button.innerText = 'Usuń';
+                li.appendChild(button);
+                ol[0].appendChild(li);
+                button.onclick = () => {
+                    li.remove();
+                    fetch('/comment', {
+                        method: 'DELETE',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            comment,
+                            id
+                        })
+                    })
+                }
             }
         }
         i++;

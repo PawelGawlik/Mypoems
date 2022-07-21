@@ -8,6 +8,7 @@ const param = path.split('/')[2];
 const button = document.getElementsByTagName('button');
 button[0].onclick = function () {
     fetch(`/likes/${param}`)
+    this.remove();
 }
 /*const commentDisplay = (param3) => {
     const param1 = document.createElement("p");
@@ -23,7 +24,14 @@ if (path !== '/poem.html') {
         header[0].innerText = poem.body.title;
         article[0].innerText = poem.body.text;
         span[0].innerText = poem.commentNumber;
-        //button[0].setAttribute('disabled', poem.button);
+        fetch(`/buttonDisplay/${param}`).then((res) => {
+            return res.json();
+        }).then((likeButton) => {
+            const like = likeButton.likeButton;
+            if (like) {
+                button[0].remove();
+            }
+        })
         let i = 0;
         const commentDisplay = (param3) => {
             const param1 = document.createElement("p");
