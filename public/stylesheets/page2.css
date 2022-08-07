@@ -1,0 +1,238 @@
+span {
+    display: none;
+}
+
+.footer>a {
+    width: 50%;
+}
+
+.main {
+    position: absolute;
+    top: 20vw;
+    left: 10vw;
+    font-size: 3vw;
+}
+
+.otherbody {
+    background-image: none;
+    height: 100vh;
+}
+
+.error {
+    font-size: 8vw;
+}
+
+.error2 {
+    font-size: 5vw;
+}
+
+.main2 {
+    position: absolute;
+    top: 30vw;
+    left: 10vw;
+    font-size: 2vw;
+}
+
+.log {
+    position: absolute;
+    top: 20vw;
+    left: 10vw;
+    font-size: 2vw;
+}
+
+form {
+    height: 300px;
+    position: relative;
+}
+
+label {
+    font-size: 40px;
+}
+
+input[name="login"] {
+    position: absolute;
+    top: 93px;
+    width: 300px;
+    height: 40px;
+    font-size: 35px;
+}
+
+input[name="password"] {
+    position: absolute;
+    top: 186px;
+    width: 300px;
+    height: 40px;
+    font-size: 35px;
+}
+
+button {
+    position: absolute;
+    top: 280px;
+    width: 110px;
+    height: 50px;
+    font-size: 30px;
+}
+
+.otherbody2>h1,
+.otherbody2>p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.otherbody2>a {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.adminform {
+    height: 2000px;
+    width: 50%;
+}
+
+.adminform>input[name="title"] {
+    height: 3%;
+    font-size: 3.86vw;
+    width: 100%;
+}
+
+.adminform>textarea[name="header"] {
+    height: 25%;
+    font-size: 3.2vw;
+    width: 100%;
+}
+
+.adminform>textarea[name="poem"] {
+    height: 57%;
+    font-size: 3.2vw;
+    width: 100%;
+}
+
+.adminform>button,
+li>button {
+    position: unset;
+}
+
+li {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: black;
+}
+
+.logout {
+    position: absolute;
+    left: 200px;
+}
+
+@media all and (max-width: 550px) {
+    .main {
+        left: 20vw;
+        top: 40vw;
+        font-size: 6vw;
+    }
+
+    .error {
+        font-size: 13vw;
+        left: 20vw;
+    }
+
+    .error2 {
+        left: 0;
+        font-size: 13vw;
+        letter-spacing: -2px;
+        text-align: center;
+    }
+
+    .main2 {
+        left: 12vw;
+        top: 80vw;
+        font-size: 6vw;
+    }
+
+    .log {
+        left: 12vw;
+        top: 70vw;
+        font-size: 6vw;
+    }
+
+    .otherbody2>h1 {
+        font-size: 1.5em;
+    }
+
+    .otherbody2>p {
+        font-size: 0.5em;
+    }
+
+    .adminform {
+        width: 90%;
+    }
+
+    .adminform>input[name="title"] {
+        font-size: 7vw;
+    }
+
+    li {
+        font-size: 10px;
+    }
+
+    li>button {
+        width: 60px;
+        height: 30px;
+        font-size: 15px;
+    }
+}
+
+@media all and (min-width: 351px) and (max-width: 400px) {}
+
+@media all and (min-width: 401px) and (max-width: 550px) {}
+
+@media all and (min-width: 551px) and (max-width: 1000px) {}
+
+@media all and (min-width: 551px) and (max-width: 650px) {
+    .main {
+        left: 12vw;
+        top: 30vw;
+    }
+
+    .main2 {
+        left: 12vw;
+        top: 35vw;
+    }
+
+    .log {
+        left: 12vw;
+        top: 25vw;
+    }
+}
+
+@media all and (max-width: 352px) {
+    .error2 {
+        letter-spacing: -1.5px;
+    }
+}
+
+@media all and (min-width: 445px) and (max-width: 465px) {}
+
+@media all and (min-width: 788px) and (max-width: 900px) {}
+
+@media all and (min-width: 466px) and (max-width: 488px) {}
+
+@media all and (max-width: 615px) {
+    label {
+        font-size: 20px;
+    }
+}
+
+@media all and (max-width: 307px) {
+
+    input[name="login"],
+    input[name="password"] {
+        width: 220px;
+    }
+}
+
+@media all and (min-width: 616px) and (max-width: 787px) {
+    .adminform>textarea[name="poem"] {
+        height: 50%;
+        font-size: 40px;
+        width: 100%;
+    }
+}

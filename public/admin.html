@@ -4,18 +4,17 @@
 <head>
     <title>Strona admina</title>
     <meta charset="utf-8">
-    <meta name="description" content="">
     <meta name="author" content="Paweł Gawlik">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
     <link rel="stylesheet" href="./stylesheets/main.css">
+    <link rel="stylesheet" href="./stylesheets/page2.css">
     <script src="../javascripts/admin.js" defer></script>
 </head>
 
-<body>
-    <h1>Witaj Pawgaw!</h1>
+<body class="otherbody">
     <a href="/">Przejdź na stronę główną</a>
-    <a href="/logout">Wyloguj się</a>
-    <form action="/admin.html" method="post">
+    <a href="/logout" class="logout">Wyloguj się</a>
+    <form action="/admin.html" method="post" class="adminform">
         <label>Tytuł wiersza</label>
         <br>
         <input name="title">
@@ -30,6 +29,7 @@
         <br>
         <button type="submit">Wyślij</button>
     </form>
+    <hr>
     <ol>
 
     </ol>
