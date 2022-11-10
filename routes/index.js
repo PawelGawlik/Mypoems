@@ -48,9 +48,18 @@ router.get('/logout', (req, res) => {
 router.post('/admin.html', async (req, res) => {
     await client.connect();
     const poemArr = await main.find({ type: 'poem' }).toArray();
-    const numberOfId = poemArr.length;
+    const poemArr2 = [...poemArr];
+    poemArr2.sort((param1, param2) => {
+        return param1.myId - param2.myId;
+    })
+    let maxId;
+    if (poemArr2.length) {
+        maxId = poemArr2[poemArr2.length - 1].myId;
+    } else {
+        maxId = 0;
+    }
     await main.insertOne({
-        myId: numberOfId + 1,
+        myId: maxId + 1,
         type: 'poem',
         body: {
             title: req.body.title,
@@ -61,6 +70,17 @@ router.post('/admin.html', async (req, res) => {
         commentNumber: 0,
         comments: []
     })
+    if (req.body.delete) {
+        const hidden = Number(req.body.hidden);
+        await main.deleteOne({
+            myId: hidden
+        })
+        await main.updateMany({ myId: { $gt: hidden } }, {
+            $inc: {
+                myId: -1
+            }
+        })
+    }
     res.redirect('back');
     client.close();
 })
@@ -197,6 +217,13 @@ router.get('/visits', async (req, res) => {
     const mainObjArr = await main.find({ myId: 0 }).toArray();
     const { visitors } = mainObjArr[0];
     res.json({ visitors });
+    client.close();
+})
+router.post('/remake', async (req, res) => {
+    await client.connect();
+    const poemArr = await main.find({ myId: Number(req.body.class) }).toArray();
+    const poem = poemArr[0];
+    res.json(poem);
     client.close();
 })
 module.exports = router;
