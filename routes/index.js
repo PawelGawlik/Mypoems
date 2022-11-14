@@ -73,13 +73,16 @@ router.post('/admin.html', async (req, res) => {
     if (req.body.delete) {
         const hidden = Number(req.body.hidden);
         await main.deleteOne({
+            type: 'poem',
             myId: hidden
         })
-        await main.updateMany({ myId: { $gt: hidden } }, {
-            $inc: {
-                myId: -1
-            }
-        })
+        if (hidden) {
+            await main.updateMany({ myId: { $gt: hidden } }, {
+                $inc: {
+                    myId: -1
+                }
+            })
+        }
     }
     res.redirect('back');
     client.close();
@@ -87,6 +90,9 @@ router.post('/admin.html', async (req, res) => {
 router.get('/poems', async (req, res) => {
     await client.connect();
     const poemArr = await main.find({ type: 'poem' }).toArray();
+    poemArr.sort((param1, param2) => {
+        return param1.myId - param2.myId;
+    })
     res.json(poemArr);
     client.close();
 })
@@ -224,6 +230,50 @@ router.post('/remake', async (req, res) => {
     const poemArr = await main.find({ myId: Number(req.body.class) }).toArray();
     const poem = poemArr[0];
     res.json(poem);
+    client.close();
+})
+router.delete('/delete', async (req, res) => {
+    const id = Number(req.body.class);
+    await client.connect();
+    await main.deleteOne({ myId: id });
+    await main.updateMany({ myId: { $gt: id } }, {
+        $inc: {
+            myId: -1
+        }
+    })
+    res.json();
+    client.close();
+})
+router.post('/change', async (req, res) => {
+    const id = Number(req.body.class);
+    const newId = Number(req.body.newMyId);
+    await client.connect();
+    const obj = await main.findOne({ myId: id })
+    if (id > newId) {
+        await main.updateMany({
+            myId: { $gte: newId, $lt: id },
+            type: 'poem'
+        }, {
+            $inc: {
+                myId: 1
+            }
+        })
+    } else if (id < newId) {
+        await main.updateMany({
+            myId: { $gt: id, $lte: newId },
+            type: 'poem'
+        }, {
+            $inc: {
+                myId: -1
+            }
+        })
+    }
+    await main.updateOne(obj, {
+        $set: {
+            myId: newId
+        }
+    })
+    res.json();
     client.close();
 })
 module.exports = router;

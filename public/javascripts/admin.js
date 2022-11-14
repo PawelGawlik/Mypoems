@@ -39,8 +39,14 @@ fetch('/poems').then((res) => {
             }
         }
         const poem = document.createElement('li');
-        poem.innerHTML = `${poemArr[i].body.title}` + `<button class=${poemArr[i].myId}>Zmień</button>`;
+        poem.innerHTML = (`${poemArr[i].body.title}`
+            + `<button class=${poemArr[i].myId}>Zmień</button>`
+            + `<button class=${poemArr[i].myId}>Usuń</button>`
+            + `<input type=number value=${poemArr[i].myId} class=index max=${poemArr.length}>
+            <button class=${poemArr[i].myId}><<</button>`
+        )
         ol[1].appendChild(poem);
+        poem.classList.add('poem');
         const modify = [];
         modify[i] = document.getElementsByClassName(`${poemArr[i].myId}`);
         modify[i][0].onclick = (event) => {
@@ -58,6 +64,36 @@ fetch('/poems').then((res) => {
                 textarea[1].innerText = poem.body.text;
                 input[2].value = poem.myId;
             })
+        }
+        modify[i][1].onclick = (event) => {
+            if (confirm("Czy na pewno chcesz usunąć wiersz?")) {
+                fetch('/delete', {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        class: event.target.className
+                    })
+                }).then(() => {
+                    event.target.parentElement.remove();
+                })
+            }
+        }
+        modify[i][2].onclick = (event) => {
+            const index = document.getElementsByClassName('index');
+            if (index[Number(event.target.className) - 1].value <= poemArr.length) {
+                fetch('/change', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        class: event.target.className,
+                        newMyId: index[Number(event.target.className) - 1].value
+                    })
+                }).then(() => {
+                    location.reload();
+                })
+            } else {
+                alert(`Zbyt duże id! Najdalsza pozycja dla wiersza to ${poemArr.length}.`)
+            }
         }
         i++;
     }
