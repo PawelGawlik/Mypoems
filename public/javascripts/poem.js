@@ -6,10 +6,22 @@ const comments = document.getElementsByClassName("comments");
 const path = location.pathname;
 const param = path.split('/')[2];
 const button = document.getElementsByTagName('button');
+const adv = document.querySelector('.advertisement');
+const off = document.querySelector('.off');
+const a = document.querySelector('.advertisement>a');
 button[0].onclick = function () {
     fetch(`/likes/${param}`)
     this.remove();
 }
+off.onclick = () => {
+    adv.remove();
+}
+const links = ["https://tmlead.pl/redirect/190176_2282", "https://tmlead.pl/redirect/190176_2289", "https://tmlead.pl/redirect/190176_2265", "https://tmlead.pl/redirect/190176_2262"];
+const desc = ["TaniaKsiążka.pl - księgarnia online", "Deichmann.com - sklep z butami online", "Lidl Polska – Bezpieczne zakupy w lidlowych cenach", "Renee.pl - Sklep z Modą"];
+const param2 = Math.floor(Math.random() * 4);
+const href = links[param2];
+a.setAttribute('href', href);
+a.innerText = desc[param2];
 /*const commentDisplay = (param3) => {
     const param1 = document.createElement("p");
     const param2 = document.createTextNode(poem.comments[i][param3]);

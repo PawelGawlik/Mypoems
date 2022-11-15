@@ -170,6 +170,29 @@ hr {
     width: 50%;
 }
 
+input[name="hidden"] {
+    display: none;
+}
+
+.advertisement {
+    position: fixed;
+    z-index: 2;
+}
+
+.advertisement>p {
+    display: inline-block;
+    font-size: 15px;
+    width: 75px;
+}
+
+.advertisement>a {
+    font-size: 20px;
+}
+
+.off {
+    text-align: center;
+    cursor: pointer;
+}
 
 @media all and (max-width: 550px) {
     body {
@@ -246,6 +269,16 @@ hr {
     article {
         font-size: 6vw;
     }
+
+    .advertisement>p {
+        width: 20px;
+        font-size: 5px;
+    }
+
+    .advertisement>a {
+        font-size: 10px;
+    }
+
 }
 
 @media all and (min-width: 351px) and (max-width: 400px) {
