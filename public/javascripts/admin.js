@@ -74,7 +74,7 @@ fetch('/poems').then((res) => {
                         class: event.target.className
                     })
                 }).then(() => {
-                    event.target.parentElement.remove();
+                    location.reload();
                 })
             }
         }

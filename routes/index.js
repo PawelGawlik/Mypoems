@@ -82,6 +82,26 @@ router.post('/admin.html', async (req, res) => {
                     myId: -1
                 }
             })
+            const mainObjArr = await main.find({ myId: 0 }).toArray();
+            const newIpsArr = mainObjArr[0].ips.map((el) => {
+                if (el.hasOwnProperty(`likeButton${hidden}`)) {
+                    delete el[`likeButton${hidden}`];
+                }
+                let i = 1;
+                while (i < 14) {
+                    if (el.hasOwnProperty(`likeButton${hidden + i}`)) {
+                        delete el[`likeButton${hidden + i}`];
+                        el[`likeButton${hidden - 1 + i}`] = true;
+                    }
+                    i++;
+                }
+                return el;
+            })
+            await main.updateOne({ myId: 0 }, {
+                $set: {
+                    ips: newIpsArr
+                }
+            })
         }
     }
     res.redirect('back');
@@ -241,6 +261,26 @@ router.delete('/delete', async (req, res) => {
             myId: -1
         }
     })
+    const mainObjArr = await main.find({ myId: 0 }).toArray();
+    const newIpsArr = mainObjArr[0].ips.map((el) => {
+        if (el.hasOwnProperty(`likeButton${id}`)) {
+            delete el[`likeButton${id}`];
+        }
+        let i = 1;
+        while (i < 14) {
+            if (el.hasOwnProperty(`likeButton${id + i}`)) {
+                delete el[`likeButton${id + i}`];
+                el[`likeButton${id - 1 + i}`] = true;
+            }
+            i++;
+        }
+        return el;
+    })
+    await main.updateOne({ myId: 0 }, {
+        $set: {
+            ips: newIpsArr
+        }
+    })
     res.json();
     client.close();
 })
@@ -258,6 +298,33 @@ router.post('/change', async (req, res) => {
                 myId: 1
             }
         })
+        const mainObjArr = await main.find({ myId: 0 }).toArray();
+        const newIpsArr = mainObjArr[0].ips.map((el) => {
+            if (el.hasOwnProperty(`likeButton${id}`)) {
+                delete el[`likeButton${id}`];
+                el[`likeButton2${newId}`] = true;
+            }
+            let i = newId;
+            while (i < id) {
+                if (el.hasOwnProperty(`likeButton${i}`)) {
+                    delete el[`likeButton${i}`];
+                    el[`likeButton2${i + 1}`] = true;
+                }
+                i++;
+            }
+            for (i = 1; i < 15; i++) {
+                if (el.hasOwnProperty(`likeButton2${i}`)) {
+                    delete el[`likeButton2${i}`];
+                    el[`likeButton${i}`] = true;
+                }
+            }
+            return el;
+        })
+        await main.updateOne({ myId: 0 }, {
+            $set: {
+                ips: newIpsArr
+            }
+        })
     } else if (id < newId) {
         await main.updateMany({
             myId: { $gt: id, $lte: newId },
@@ -265,6 +332,33 @@ router.post('/change', async (req, res) => {
         }, {
             $inc: {
                 myId: -1
+            }
+        })
+        const mainObjArr = await main.find({ myId: 0 }).toArray();
+        const newIpsArr = mainObjArr[0].ips.map((el) => {
+            if (el.hasOwnProperty(`likeButton${id}`)) {
+                delete el[`likeButton${id}`];
+                el[`likeButton2${newId}`] = true;
+            }
+            let i = newId;
+            while (i > id) {
+                if (el.hasOwnProperty(`likeButton${i}`)) {
+                    delete el[`likeButton${i}`];
+                    el[`likeButton2${i - 1}`] = true;
+                }
+                i--;
+            }
+            for (i = 1; i < 15; i++) {
+                if (el.hasOwnProperty(`likeButton2${i}`)) {
+                    delete el[`likeButton2${i}`];
+                    el[`likeButton${i}`] = true;
+                }
+            }
+            return el;
+        })
+        await main.updateOne({ myId: 0 }, {
+            $set: {
+                ips: newIpsArr
             }
         })
     }

@@ -16,9 +16,9 @@ button[0].onclick = function () {
 off.onclick = () => {
     adv.remove();
 }
-const links = ["https://tmlead.pl/redirect/190176_2282", "https://tmlead.pl/redirect/190176_2289", "https://tmlead.pl/redirect/190176_2265", "https://tmlead.pl/redirect/190176_2262"];
-const desc = ["TaniaKsiążka.pl - księgarnia online", "Deichmann.com - sklep z butami online", "Lidl Polska – Bezpieczne zakupy w lidlowych cenach", "Renee.pl - Sklep z Modą"];
-const param2 = Math.floor(Math.random() * 4);
+const links = ["https://tmlead.pl/redirect/190176_2282", "https://tmlead.pl/redirect/190176_2289", "https://tmlead.pl/redirect/190176_2265", "https://tmlead.pl/redirect/190176_2262", "https://tmlead.pl/redirect/190176_2175", "https://pawgaw.oferty-kredytowe.pl"];
+const desc = ["TaniaKsiążka.pl - księgarnia online", "Deichmann.com - sklep z butami online", "Lidl Polska – Bezpieczne zakupy w lidlowych cenach", "Renee.pl - Sklep z Modą", "Gaia - sklep z bielizną", "Konta, pożyczki i inne"];
+const param2 = Math.floor(Math.random() * 6);
 const href = links[param2];
 a.setAttribute('href', href);
 a.innerText = desc[param2];

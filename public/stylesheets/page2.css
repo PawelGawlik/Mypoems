@@ -90,19 +90,19 @@ button {
 
 .adminform>input[name="title"] {
     height: 3%;
-    font-size: 3.86vw;
+    font-size: 1.86vw;
     width: 100%;
 }
 
 .adminform>textarea[name="header"] {
     height: 25%;
-    font-size: 3.2vw;
+    font-size: 1.2vw;
     width: 100%;
 }
 
 .adminform>textarea[name="poem"] {
     height: 57%;
-    font-size: 3.2vw;
+    font-size: 1.2vw;
     width: 100%;
 }
 
@@ -169,6 +169,11 @@ li {
         font-size: 7vw;
     }
 
+    .adminform>textarea[name="header"],
+    .adminform>textarea[name="poem"] {
+        font-size: 5vw;
+    }
+
     li {
         font-size: 10px;
     }
@@ -230,9 +235,17 @@ li {
 }
 
 @media all and (min-width: 616px) and (max-width: 787px) {
+    .adminform>input[name="title"] {
+        font-size: 20px;
+    }
+
+    .adminform>textarea[name="header"] {
+        font-size: 20px;
+    }
+
     .adminform>textarea[name="poem"] {
         height: 50%;
-        font-size: 40px;
+        font-size: 20px;
         width: 100%;
     }
 }
