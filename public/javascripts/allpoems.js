@@ -5,14 +5,14 @@ fetch('/poems').then((res) => {
 }).then((poemArr) => {
     while (i < poemArr.length) {
         const h1 = document.createElement("h1");
-        const p = document.createElement("P");
+        const pre = document.createElement("pre");
         const hr = document.createElement("hr");
         const title = document.createTextNode(poemArr[i].body.title);
         const text = document.createTextNode(poemArr[i].body.text);
         h1.appendChild(title);
-        p.appendChild(text);
+        pre.appendChild(text);
         body.appendChild(h1);
-        body.appendChild(p);
+        body.appendChild(pre);
         body.appendChild(hr);
         i++;
     }

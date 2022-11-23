@@ -22,12 +22,6 @@ const param2 = Math.floor(Math.random() * 6);
 const href = links[param2];
 a.setAttribute('href', href);
 a.innerText = desc[param2];
-/*const commentDisplay = (param3) => {
-    const param1 = document.createElement("p");
-    const param2 = document.createTextNode(poem.comments[i][param3]);
-    param1.appendChild(param2);
-    comments[0].appendChild(param1);
-}*/
 form[0].setAttribute("action", `/comment/${param}`);
 if (path !== '/poem.html') {
     fetch(`/poem/${param}`).then((res) => {
@@ -56,15 +50,7 @@ if (path !== '/poem.html') {
             commentDisplay("comment");
             const div = document.createElement('div');
             div.innerText = poem.comments[i].date;
-            comments[0].appendChild(div)
-            /*const p1 = document.createElement("p");
-            const text1 = document.createTextNode(poem.comments[i].nick);
-            p1.appendChild(text1);
-            comments[0].appendChild(p1);
-            const p2 = document.createElement("p");
-            const text2 = document.createTextNode(poem.comments[i].comment);
-            p2.appendChild(text2);
-            comments[0].appendChild(p2);*/
+            comments[0].appendChild(div);
             i++;
         }
     })

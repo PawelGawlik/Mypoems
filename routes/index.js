@@ -116,11 +116,6 @@ router.get('/poems', async (req, res) => {
     res.json(poemArr);
     client.close();
 })
-/*router.get('/poem.html/:id?', (req, res) => {
-    res.sendFile('poem.html', {
-        root: './public'
-    })
-})*/
 router.get('/poem/:id', async (req, res) => {
     await client.connect();
     const id = Number(req.params.id);
@@ -159,7 +154,6 @@ router.post('/comment/:id', async (req, res) => {
     client.close();
 })
 router.get('/likes/:id', async (req, res) => {
-    //if (!req.cookies[`like${id}`]) {
     await client.connect();
     const id = parseInt(req.params.id);
     const poemArr = await main.find({ myId: id }).toArray();
@@ -182,16 +176,8 @@ router.get('/likes/:id', async (req, res) => {
             ips: userArr
         }
     })
-    //res.cookie(`like${id}`, true);
     res.json(poemArr[0]);
     client.close();
-    /* } else {
-         await client.connect();
-         const id = parseInt(req.params.id);
-         const poemArr = await main.find({ myId: id }).toArray();
-         res.json(poemArr[0]);
-         client.close();
-     }*/
 })
 router.delete('/comment', async (req, res) => {
     await client.connect();
