@@ -12,6 +12,7 @@ app.listen(process.env.PORT, () => {
     console.log("Serwer wystartował...");
 })
 app.set('x-powered-by', false);
+app.set('trust proxy', true);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.text());

@@ -23,16 +23,20 @@ fetch('/visits').then((res) => {
         i = 7;
         max = 14;
     }
-    const poems = (par1, poemArr) => {
-        h2[par1].innerText = poemArr[par1].body.title;
-        p[par1].innerText = poemArr[par1].body.header;
-        counter[par1].innerText = poemArr[par1].likes;
+    const poems = (par1, par2, poemArr) => {
+        h2[par1 - par2].innerText = poemArr[par1].body.title;
+        p[par1 - par2].innerText = poemArr[par1].body.header;
+        counter[par1 - par2].innerText = poemArr[par1].likes;
     }
     fetch('/poems').then((res) => {
         return res.json();
     }).then((poemArr) => {
         while (i < poemArr.length && i < max) {
-            poems(i, poemArr);
+            if (i < 7) {
+                poems(i, 0, poemArr);
+            } else {
+                poems(i, 7, poemArr);
+            }
             i++;
         }
     })
